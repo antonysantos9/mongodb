@@ -1,0 +1,40 @@
+// Active: 1774550382979@@antonybisposantos_db_user@null@aula
+db("aula").collection("personagens").find({
+    nome: "nami",
+});
+
+db("aula").collection("personagens").find({
+    idade: "20",
+});
+
+db("aula").collection("personagens").find({
+    idade: { $gt: 2 },
+});
+
+db("aula").collection("personagens").find({
+    idade: { $lt: 20 },
+});
+
+db("aula").collection("personagens").find({
+    idade: { $lte: 20 },
+});
+
+db("aula").collection("personagens").find({
+    idade: 20,
+    nome: "luffy",
+});
+
+db("aula").collection("personagens").find({
+    $or: [
+        { idade: {$lt: 20 } },
+        { idade: {$gt: 20 } },
+    ],
+});
+
+db("aula").collection("personagens").find({
+    idade: { $ne: 20 },
+});
+
+db("aula").collection("personagens").find({
+    nome: { $regex: "luffy" },
+});

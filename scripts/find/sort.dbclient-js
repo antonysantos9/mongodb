@@ -1,0 +1,6 @@
+// Active: 1774550382979@@antonybisposantos_db_user@null@aula
+db("aula").collection("personagens").find().sort({ nome: 1 });
+//ordem crescente
+
+db("aula").collection("personagens").find().sort({ nome: -1 });
+//ordem decrescente

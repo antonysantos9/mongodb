@@ -1,0 +1,6 @@
+// Active: 1774550382979@@antonybisposantos_db_user@null@aula
+db("aula").collection("personagens").insertOne({
+    "nome": "Gecko moria",
+    "idade": 48,
+    "fruta": "Sombra",
+})

@@ -1,0 +1,13 @@
+// Active: 1774550382979@@antonybisposantos_db_user@null@aula
+db("aula").collection("personagens").insertMany([
+    {
+        "nome": "BIg Mom",
+        "idade": 69,
+        "fruta": "Soul"
+    },
+    {
+        "nome": "kaidou",
+        "idade": 69,
+        "fruta": "Dragon"
+    }
+]);
