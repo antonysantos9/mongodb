@@ -1,0 +1,32 @@
+// Active: 1774550382979@@antonybisposantos_db_user@null@aula
+db("aula").collection("personagens").updateOne(
+ { "nome": "Goku" },
+
+ {
+     $set: { 
+        ilha: "Ilha de Bardock"
+      } 
+    
+    },
+);
+
+db("aula").collection("personagens").updateOne(
+    {idade: 20},
+    {
+        $inc:{
+            idade: 1,
+        }
+    }
+)
+
+db("aula").collection("personagens").updateOne(
+    {idade: 20},
+    {
+        $inc:{
+            idade: -1,
+        }
+    },
+    {
+        upsert: true,
+    }
+);

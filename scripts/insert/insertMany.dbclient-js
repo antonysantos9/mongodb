@@ -2,7 +2,7 @@
 db("aula").collection("personagens").insertMany([
     {
         "nome": "BIg Mom",
-        "idade": 69,
+        "idade": 68,
         "fruta": "Soul"
     },
     {
