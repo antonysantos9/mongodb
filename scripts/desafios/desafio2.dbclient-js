@@ -1,0 +1,10 @@
+db("aula")
+  .collection("frutas")
+  .aggregate([
+    {
+      $group: {
+        _id: "$tipo",
+        frutas: { $push: "$nome" },
+      },
+    },
+  ]);

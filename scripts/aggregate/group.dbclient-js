@@ -1,0 +1,45 @@
+db("aula").collection("personagens").aggregate([
+  {
+    $group: { 
+      _id: {
+        $cond: {
+          if: {
+            $or: [
+              { $eq: ["$fruta", ""] },
+              { $eq: ["$fruta", null] }
+            ]
+          },
+          then: "sem fruta",
+          else: "usuario com fruta"
+        }
+      },
+      mediaIdade: {
+        $avg: "$idade"
+      }
+    }
+  }
+]);
+
+
+db("aula").collection("personagens").aggregate([
+  {
+    $group: { 
+      _id: {
+        $cond: {
+          if: {
+            $or: [
+              { $eq: ["$fruta", ""] },
+              { $eq: ["$fruta", null] },
+              { $eq: [{ $ifNull: ["$fruta", null] }, null] }
+            ]
+          },
+          then: "sem fruta",
+          else: "usuario com fruta"
+        }
+      },
+      mediaIdade: {
+        $avg: "$idade"
+      }
+    }
+  }
+]);

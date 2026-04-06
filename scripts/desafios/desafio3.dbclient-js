@@ -1,0 +1,68 @@
+db("aula").collection("personagens").aggregate([
+  {
+    $lookup: {
+      from: "personagens",
+      localField: "_id",
+      foreignField: "frutas_ids",
+      as: "personagens"
+    },
+  },
+  {
+    $group: {
+      _id: "$tipo",
+      frutas: { $push: "$nome" },
+      personagens: { $push: "$personagens.nome" }
+    },
+  },
+]);
+
+db("aula").collection("personagens").aggregate([
+  {
+    $lookup: {
+      from: "personagens",
+      localField: "_id",
+      foreignField: "frutas_ids",
+      as: "personagens"
+    }
+  },
+  {
+    $unwind: {
+      path: "$personagens",
+      preserveNullAndEmptyArrays: true
+    }
+  },
+  {
+    $group: {
+      _id: "$tipo",
+      frutas: { $addToSet: "$nome" },
+      personagens: { $addToSet: "$personagens.nome" }
+    }
+  }
+]);
+
+db("aula").collection("personagens").aggregate([
+  {
+    $lookup: {
+      from: "personagens",
+      localField: "_id",
+      foreignField: "frutas_ids",
+      as: "personagens"
+    }
+  },
+  {
+    $unwind: {
+      path: "$personagens",
+      preserveNullAndEmptyArrays: true
+    }
+  },
+  {
+    $group: {
+      _id: "$tipo",
+      frutas: { $addToSet: "$nome" },
+      personagens: { $addToSet: "$personagens.nome" }
+    }
+  },
+  {
+    $sort: { _id: 1 }
+  }
+]);

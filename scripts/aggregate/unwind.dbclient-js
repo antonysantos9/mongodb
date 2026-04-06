@@ -1,0 +1,13 @@
+db("aula").collection("personagens").aggregate([
+  {
+    $lookup: {
+        from: "personagens",
+        localField: "_id",
+        foreignField: "frutas_ids",
+        as: "personagens"
+    }
+},
+{
+    $unwind: "$personagens"
+}
+]);
